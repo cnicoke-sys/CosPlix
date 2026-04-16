@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community – CosPlix</title>
+  
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Dela Gothic One', 'cursive'],
+            body: ['Outfit', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    html, body { height: 100%; margin: 0; background:#0a0a1a; color:#e8e8f0; overflow-x: hidden; } 
+    * { box-sizing: border-box; }
+
+    #particles-js { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+    .content-wrapper { position: relative; z-index: 10; }
+
+    /* Consistent Logo Style */
+    .brand-text {
+      font-family: 'Dela Gothic One', cursive;
+      background: linear-gradient(to right, #ff006e, #8338ec, #3a86ff, #ff006e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% auto;
+      animation: shine 4s linear infinite;
+    }
+    @keyframes shine { to { background-position: 200% center; } }
+
+    /* Consistent Navigation Links */
+    .nav-link { 
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #a0a0c0;
+      position: relative; 
+      transition: color 0.3s; 
+    }
+    .nav-link::after { 
+      content:''; position:absolute; bottom:-4px; left:0; width:0; height:2px; border-radius:2px; transition: width 0.3s; background: var(--c, #ff006e); 
+    }
+    .nav-link:hover::after, .nav-link.active::after { width:100%; }
+    .nav-link.active { color: #06d6a0 !important; }
+
+    /* Animations & Scrollbar */
+    @keyframes slide-up { from{opacity:0;transform:translateY(40px)} to{opacity:1;transform:translateY(0)} }
+    .anim-slide-up { animation: slide-up 0.6s ease-out forwards; }
+    
+    .mobile-menu { transform: translateX(-100%); transition: transform 0.3s ease; background:#0a0a1a; z-index: 100; }
+    .mobile-menu.open { transform: translateX(0); }
+    ::-webkit-scrollbar { width: 8px; } ::-webkit-scrollbar-track { background: #0a0a1a; } ::-webkit-scrollbar-thumb { background: #ff006e; border-radius: 4px; }
+  </style>
+</head>
+
+<body class="font-body">
+  <div id="particles-js"></div>
+
+  <div class="content-wrapper flex flex-col min-h-screen">
+    <nav class="fixed top-0 left-0 w-full z-50" style="background:rgba(10,10,26,0.92); backdrop-filter:blur(16px); border-bottom:1px solid rgba(255,255,255,0.05);">
+      <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl shadow-lg" style="background:linear-gradient(135deg,#ff006e,#8338ec);">⚡</div>
+          <span class="brand-text text-lg tracking-wide">CosPlix</span>
+        </a>
+        <div class="hidden lg:flex items-center gap-6 text-sm font-medium">
+          <a href="index.html" class="nav-link" style="--c:#ff006e;">Home</a>
+          <a href="news.html" class="nav-link" style="--c:#8338ec;">News</a>
+          <a href="gallery.html" class="nav-link" style="--c:#3a86ff;">Gallery</a>
+          <a href="events.html" class="nav-link" style="--c:#fb5607;">Events</a>
+          <a href="tutorials.html" class="nav-link" style="--c:#ffbe0b;">Tutorials</a>
+          <a href="community.html" class="nav-link active" style="--c:#06d6a0;">Community</a>
+          <a href="about.html" class="nav-link" style="--c:#e0aaff;">About</a>
+          <a href="contact.html" class="nav-link" style="--c:#ff006e;">Support</a>
+        </div>
+        <button class="lg:hidden p-2" onclick="toggleMobile()"><i data-lucide="menu" style="color:#ff006e;"></i></button>
+      </div>
+    </nav>
+
+    <div id="mobile-menu" class="mobile-menu fixed inset-0 flex flex-col gap-1 p-6 pt-20">
+      <button class="absolute top-4 right-4 p-2" onclick="toggleMobile()"><i data-lucide="x" style="color:#ff006e;"></i></button>
+      <a href="index.html" class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">🏠 Home</a>
+      <a href="news.html" class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">📰 News</a>
+      <a href="gallery.html" class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">📸 Gallery</a>
+      <a href="events.html" class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">🗓️ Events</a>
+      <a href="tutorials.html" class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">✂️ Tutorials</a>
+      <a href="community.html" class="text-lg font-semibold py-3 px-4 rounded-lg bg-white/5 text-[#06d6a0]">💬 Community</a>
+      <a href="about.html" class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">👥 About</a>
+      <a href="contact.html" class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">🎧 Support</a>
+    </div>
+
+    <main class="pt-32 pb-16 max-w-7xl mx-auto px-6 flex-grow">
+      <h1 class="font-display text-4xl mb-2"><span style="color:#06d6a0;">Community</span> <span style="color:#fff;">Forum</span></h1>
+      <p class="mb-8" style="color:#8080a0;">Join the conversation with fellow fans</p>
+      
+      <div class="rounded-2xl p-5 mb-8" style="background:linear-gradient(135deg,#1a1a3e,#151530); border:1px solid rgba(6,214,160,0.2);">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-10 h-10 rounded-full flex items-center justify-center text-lg" style="background:linear-gradient(135deg,#06d6a0,#3a86ff);">😊</div>
+          <span class="font-semibold text-sm">Start a discussion</span>
+        </div>
+        <textarea id="community-input" class="w-full rounded-xl p-4 text-sm resize-none" rows="3" placeholder="Share your thoughts, ask questions, or show off your latest creation..." style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); color:#e8e8f0; outline:none;"></textarea>
+        <div class="flex justify-end mt-3">
+          <button onclick="postCommunity()" class="px-6 py-2 rounded-xl text-sm font-semibold transition-transform hover:scale-105" style="background:#06d6a0; color:#0a0a1a;">Post</button>
+        </div>
+      </div>
+      
+      <div id="community-posts" class="grid gap-5"></div>
+    </main>
+
+    <footer class="w-full py-10 px-6 text-center mt-auto" style="background:rgba(255,255,255,0.02); border-top:1px solid rgba(255,255,255,0.05);">
+      <div class="brand-text text-xl mb-3">CosPlix</div>
+      <p class="text-xs" style="color:#606080;">© 2026 CosPlix, Cosplay & Anime Hub. Made with 💜 for the fandom community.</p>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    function toggleMobile() { document.getElementById('mobile-menu').classList.toggle('open'); }
+    
+    // Initialize Lucide icons for mobile menu button and close button
+    if (typeof lucide !== 'undefined') {
+      lucide.createIcons();
+    }
+
+    // ----- Community Logic (Unchanged) -----
+    const communityPosts = [
+      { avatar:'🦊', user:'CosplayQueen', time:'30 min ago', text:'Just finished my Genshin Impact Furina cosplay! Took 3 months but so worth it 💙', likes:47, replies:12, color:'#ff006e' },
+      { avatar:'🐉', user:'AnimeWatcher99', time:'2 hours ago', text:'Who else is hyped for the new Jujutsu Kaisen movie? The trailer looks INSANE! 🔥', likes:89, replies:34, color:'#8338ec' },
+      { avatar:'🌸', user:'SakuraCrafter', time:'5 hours ago', text:'Any tips for working with Worbla for the first time? Making a full set of armor and feeling overwhelmed 😅', likes:23, replies:18, color:'#3a86ff' },
+    ];
+
+    function renderCommunity() {
+      const container = document.getElementById('community-posts');
+      if (!container) return;
+      container.innerHTML = communityPosts.map((p, i) => `
+        <div class="rounded-2xl p-5 anim-slide-up" style="background:linear-gradient(135deg,#1a1a3e,#151530); border:1px solid rgba(255,255,255,0.06); animation-delay:${i*0.1}s;">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-full flex items-center justify-center text-lg" style="background:${p.color}33;">${p.avatar}</div>
+            <div>
+              <div class="font-semibold text-sm" style="color:${p.color};">${p.user}</div>
+              <div class="text-xs" style="color:#606080;">${p.time}</div>
+            </div>
+          </div>
+          <p class="text-sm mb-3" style="color:#c0c0d0;">${p.text}</p>
+          <div class="flex gap-4 text-xs" style="color:#8080a0;">
+            <span class="cursor-pointer hover:text-red-400" onclick="this.style.color='#ff006e';this.innerHTML='❤️ '+(${p.likes}+1)">♡ ${p.likes}</span>
+            <span>💬 ${p.replies} replies</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function postCommunity() {
+      const input = document.getElementById('community-input');
+      if (!input.value.trim()) return;
+      communityPosts.unshift({ avatar:'😊', user:'You', time:'Just now', text:input.value.trim(), likes:0, replies:0, color:'#06d6a0' });
+      input.value = '';
+      renderCommunity();
+    }
+
+    renderCommunity();
+
+    // Particles (Synced with other pages)
+    particlesJS("particles-js", {
+      "particles": {
+        "number": { "value": 130, "density": { "enable": true, "value_area": 800 } },
+        "color": { "value": ["#ff006e", "#8338ec", "#3a86ff"] },
+        "opacity": { "value": 0.5, "random": true },
+        "size": { "value": 2.5, "random": true },
+        "line_linked": { "enable": true, "distance": 130, "color": "#8338ec", "opacity": 0.15 },
+        "move": { "enable": true, "speed": 1.5, "out_mode": "out" }
+      }
+    });
+  </script>
+</body>
+</html>
