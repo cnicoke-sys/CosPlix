@@ -20,32 +20,36 @@
 <body class="font-body">
   <div id="particles-js"></div>
 
-  <div class="content-wrapper flex flex-col min-h-full">
+  <div class="content-wrapper flex flex-col min-h-screen">
     <nav class="fixed top-0 left-0 w-full z-50" style="background:rgba(10,10,26,0.92); backdrop-filter:blur(16px); border-bottom:1px solid rgba(255,255,255,0.05);">
-      <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="index.html" class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl shadow-lg" style="background:linear-gradient(135deg,#ff006e,#8338ec);">⚡</div>
-          <span class="font-display text-xl tracking-tighter gradient-text">CosPlix</span>
+      <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl transition-transform group-hover:rotate-12" style="background:linear-gradient(135deg,#ff006e,#8338ec);">⚡</div>
+          <span class="font-display text-lg tracking-wide gradient-text">CosPlix</span>
         </a>
-        <div class="hidden lg:flex items-center gap-7">
-          <a href="index.html"     class="nav-link">Home</a>
-          <a href="news.html"      class="nav-link">News</a>
-          <a href="gallery.html"   class="nav-link">Gallery</a>
-          <a href="events.html"    class="nav-link">Events</a>
-          <a href="tutorials.html" class="nav-link active" style="color:#ffbe0b;">Tutorials</a>
-          <a href="community.html" class="nav-link">Community</a>
-          <a href="about.html"     class="nav-link">About</a>
-          <a href="contact.html"   class="nav-link">Support</a>
+        <div class="hidden lg:flex items-center gap-6 text-sm font-bold">
+          <a href="index.html"     class="nav-link" style="--c:#ff006e;">Home</a>
+          <a href="news.html"      class="nav-link" style="--c:#8338ec;">News</a>
+          <a href="gallery.html"   class="nav-link" style="--c:#3a86ff;">Gallery</a>
+          <a href="events.html"    class="nav-link" style="--c:#fb5607;">Events</a>
+          <a href="tutorials.html" class="nav-link active" style="--c:#ffbe0b; color:#ffbe0b;">Tutorials</a>
+          <a href="community.html" class="nav-link" style="--c:#06d6a0;">Community</a>
+          <a href="about.html"     class="nav-link" style="--c:#e0aaff;">About</a>
+          <a href="contact.html"   class="nav-link" style="--c:#ff006e;">Support</a>
         </div>
-        <button class="lg:hidden p-2" onclick="toggleMobile()"><i data-lucide="menu" style="color:#ff006e;"></i></button>
+        <button class="lg:hidden p-2" onclick="toggleMobile()" aria-label="Open Menu">
+          <i data-lucide="menu" style="color:#ff006e;"></i>
+        </button>
       </div>
     </nav>
 
-    <div id="mobile-menu" class="mobile-menu fixed inset-0 z-[60] flex flex-col gap-1 p-6 pt-24">
-      <button class="absolute top-6 right-6 p-2" onclick="toggleMobile()"><i data-lucide="x" style="color:#ff006e;"></i></button>
+    <div id="mobile-menu" class="mobile-menu fixed inset-0 flex flex-col gap-1 p-6 pt-20 hidden lg:hidden">
+      <button class="absolute top-4 right-4 p-2" onclick="toggleMobile()" aria-label="Close Menu">
+        <i data-lucide="x" style="color:#ff006e;"></i>
+      </button>
       <a href="index.html"     class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">🏠 Home</a>
       <a href="news.html"      class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">📰 News</a>
-      <a href="gallery.html"   class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">🖼️ Gallery</a>
+      <a href="gallery.html"   class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">📸 Gallery</a>
       <a href="events.html"    class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">🗓️ Events</a>
       <a href="tutorials.html" class="text-lg font-semibold py-3 px-4 rounded-lg bg-white/5 text-[#ffbe0b]">✂️ Tutorials</a>
       <a href="community.html" class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">💬 Community</a>
@@ -78,16 +82,26 @@
       <div id="tutorials-list" class="grid md:grid-cols-2 gap-8"></div>
     </main>
 
-    <footer class="w-full py-10 px-6 text-center mt-auto">
-      <div class="font-display text-xl mb-3 gradient-text">CosPlix</div>
-      <p class="text-sm" style="color:#606080;">© 2026 CosPlix Academy.</p>
+    <footer class="w-full py-10 px-6 text-center mt-auto" style="background:rgba(255,255,255,0.02); border-top:1px solid rgba(255,255,255,0.05);">
+      <div class="font-display text-lg mb-2 gradient-text">CosPlix</div>
+      <p class="text-xs" style="color:#606080;">© 2026 CosPlix Academy.</p>
     </footer>
   </div>
 
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script src="script.js"></script>
   <script>
-    $(document).ready(() => initTutorialsPage());
+    // Toggle logic for mobile menu
+    function toggleMobile() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+      menu.classList.toggle('open');
+    }
+
+    $(document).ready(() => {
+      lucide.createIcons();
+      initTutorialsPage();
+    });
   </script>
 </body>
 </html>
