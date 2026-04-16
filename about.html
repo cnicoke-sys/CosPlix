@@ -22,11 +22,11 @@
   <div class="content-wrapper flex flex-col min-h-screen">
     <nav class="fixed top-0 left-0 w-full z-50" style="background:rgba(10,10,26,0.92); backdrop-filter:blur(16px); border-bottom:1px solid rgba(255,255,255,0.05);">
       <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-        <a href="index.html" class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl shadow-lg" style="background:linear-gradient(135deg,#ff006e,#8338ec);">⚡</div>
-          <span class="brand-text text-lg tracking-wide">CosPlix</span>
+        <a href="index.html" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl transition-transform group-hover:rotate-12" style="background:linear-gradient(135deg,#ff006e,#8338ec);">⚡</div>
+          <span class="font-display text-lg tracking-wide gradient-text">CosPlix</span>
         </a>
-        <div class="hidden lg:flex items-center gap-6 text-sm font-medium">
+        <div class="hidden lg:flex items-center gap-6 text-sm font-bold">
           <a href="index.html"     class="nav-link" style="--c:#ff006e;">Home</a>
           <a href="news.html"      class="nav-link" style="--c:#8338ec;">News</a>
           <a href="gallery.html"   class="nav-link" style="--c:#3a86ff;">Gallery</a>
@@ -53,14 +53,13 @@
     </div>
 
     <main class="pt-32 pb-16 max-w-7xl mx-auto px-6 flex-grow">
-
       <div class="relative mb-20 rounded-3xl overflow-hidden glass-card anim-slide-up">
         <video autoplay muted loop playsinline class="w-full h-[400px] object-cover opacity-70">
           <source src="images/eyegif.mp4" type="video/mp4">
         </video>
         <div class="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent"></div>
         <div class="absolute bottom-10 left-8 max-w-xl">
-          <h1 class="brand-text text-5xl mb-3">CosPlix</h1>
+          <h1 class="font-display text-5xl mb-3 gradient-text">CosPlix</h1>
           <p class="text-lg" style="color:#d0d0ff;">Your source for anime news, cosplay events, and community highlights.</p>
         </div>
       </div>
@@ -68,7 +67,7 @@
       <div class="mb-20 anim-slide-up">
         <h2 class="font-display text-2xl mb-4"><span style="color:#e0aaff;">About</span> <span class="text-white">This Website</span></h2>
         <p class="text-lg leading-relaxed max-w-3xl" style="color:#a0a0c0;">
-          At CosPlix, we're dedicated to delivering the latest anime news and cosplay event coverage, providing fans with up-to-date information, engaging content, and a space to explore the ever-growing anime culture! From breaking news to convention highlights, we bring everything together in one place.
+          At CosPlix, we're dedicated to delivering the latest anime news and cosplay event coverage, providing fans with up-to-date information, engaging content, and a space to explore the ever-growing anime culture!
         </p>
       </div>
 
@@ -76,38 +75,23 @@
         <a href="news.html" class="glass-card p-6 rounded-3xl block">
           <img src="images/ghibli.jpg" class="w-full h-40 object-cover rounded-xl mb-4">
           <h3 class="font-semibold mb-2">📰 Anime News</h3>
-          <p class="text-sm" style="color:#9090b0;">Latest updates on anime releases, studios, and industry developments.</p>
+          <p class="text-sm" style="color:#9090b0;">Latest updates on anime releases and industry developments.</p>
         </a>
         <a href="events.html" class="glass-card p-6 rounded-3xl block">
           <img src="images/cosplay.jpg" class="w-full h-40 object-cover rounded-xl mb-4">
           <h3 class="font-semibold mb-2">🎭 Cosplay Events</h3>
-          <p class="text-sm" style="color:#9090b0;">Coverage of conventions, competitions, and fan gatherings worldwide. <br> <span class="text-[10px] opacity-50">💕Cr: @Yuki雪雪(♪Douyin)</span></p>
+          <p class="text-sm" style="color:#9090b0;">Coverage of conventions and fan gatherings worldwide.</p>
         </a>
         <a href="community.html" class="glass-card p-6 rounded-3xl block">
           <img src="images/community.jpg" class="w-full h-40 object-cover rounded-xl mb-4">
           <h3 class="font-semibold mb-2">🌐 Community</h3>
-          <p class="text-sm" style="color:#9090b0;">Showcasing creative fans, trending cosplays, and community highlights.</p>
+          <p class="text-sm" style="color:#9090b0;">Showcasing creative fans and community highlights.</p>
         </a>
-      </div>
-
-      <div class="mb-20 anim-slide-up">
-        <h2 class="font-display text-2xl mb-4"><span style="color:#e0aaff;">Our</span> <span class="text-white">Purpose</span></h2>
-        <p class="leading-relaxed max-w-3xl" style="color:#a0a0c0;">
-          Our goal is to provide a reliable and engaging platform where anime fans and cosplayers can stay informed and inspired. We aim to connect communities through shared interests, while promoting creativity and participation in global fandom culture.
-        </p>
-      </div>
-
-      <h2 class="font-display text-2xl mb-8 anim-slide-up"><span style="color:#e0aaff;">Why Choose</span> <span class="text-white">Us</span></h2>
-      <div class="grid md:grid-cols-2 gap-6 mb-20">
-        <div class="glass-card p-6 rounded-xl">✔ Fast and reliable anime news updates</div>
-        <div class="glass-card p-6 rounded-xl">✔ Dedicated cosplay event coverage</div>
-        <div class="glass-card p-6 rounded-xl">✔ Clean and modern user interface</div>
-        <div class="glass-card p-6 rounded-xl">✔ Built for fans, by fans</div>
       </div>
     </main>
 
     <footer class="w-full py-10 px-6 text-center mt-auto" style="background:rgba(255,255,255,0.02); border-top:1px solid rgba(255,255,255,0.05);">
-      <div class="brand-text text-xl mb-3">CosPlix</div>
+      <div class="font-display text-lg mb-2 gradient-text">CosPlix</div>
       <p class="text-xs" style="color:#606080;">© 2026 CosPlix Hub. Made with 💜 for the fandom community.</p>
     </footer>
   </div>

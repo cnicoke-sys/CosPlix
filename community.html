@@ -6,6 +6,7 @@
   <title>Community – CosPlix</title>
 
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
@@ -22,11 +23,11 @@
   <div class="content-wrapper flex flex-col min-h-screen">
     <nav class="fixed top-0 left-0 w-full z-50" style="background:rgba(10,10,26,0.92); backdrop-filter:blur(16px); border-bottom:1px solid rgba(255,255,255,0.05);">
       <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-        <a href="index.html" class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl shadow-lg" style="background:linear-gradient(135deg,#ff006e,#8338ec);">⚡</div>
-          <span class="brand-text text-lg tracking-wide">CosPlix</span>
+        <a href="index.html" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl transition-transform group-hover:rotate-12" style="background:linear-gradient(135deg,#ff006e,#8338ec);">⚡</div>
+          <span class="font-display text-lg tracking-wide gradient-text">CosPlix</span>
         </a>
-        <div class="hidden lg:flex items-center gap-6 text-sm font-medium">
+        <div class="hidden lg:flex items-center gap-6 text-sm font-bold">
           <a href="index.html"     class="nav-link" style="--c:#ff006e;">Home</a>
           <a href="news.html"      class="nav-link" style="--c:#8338ec;">News</a>
           <a href="gallery.html"   class="nav-link" style="--c:#3a86ff;">Gallery</a>
@@ -36,12 +37,16 @@
           <a href="about.html"     class="nav-link" style="--c:#e0aaff;">About</a>
           <a href="contact.html"   class="nav-link" style="--c:#ff006e;">Support</a>
         </div>
-        <button class="lg:hidden p-2" onclick="toggleMobile()"><i data-lucide="menu" style="color:#ff006e;"></i></button>
+        <button class="lg:hidden p-2" onclick="toggleMobile()" aria-label="Open Menu">
+          <i data-lucide="menu" style="color:#ff006e;"></i>
+        </button>
       </div>
     </nav>
 
-    <div id="mobile-menu" class="mobile-menu fixed inset-0 flex flex-col gap-1 p-6 pt-20">
-      <button class="absolute top-4 right-4 p-2" onclick="toggleMobile()"><i data-lucide="x" style="color:#ff006e;"></i></button>
+    <div id="mobile-menu" class="mobile-menu fixed inset-0 flex flex-col gap-1 p-6 pt-20 hidden lg:hidden">
+      <button class="absolute top-4 right-4 p-2" onclick="toggleMobile()" aria-label="Close Menu">
+        <i data-lucide="x" style="color:#ff006e;"></i>
+      </button>
       <a href="index.html"     class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">🏠 Home</a>
       <a href="news.html"      class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">📰 News</a>
       <a href="gallery.html"   class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">📸 Gallery</a>
@@ -73,13 +78,25 @@
     </main>
 
     <footer class="w-full py-10 px-6 text-center mt-auto" style="background:rgba(255,255,255,0.02); border-top:1px solid rgba(255,255,255,0.05);">
-      <div class="brand-text text-xl mb-3">CosPlix</div>
-      <p class="text-xs" style="color:#606080;">© 2026 CosPlix, Cosplay & Anime Hub. Made with 💜 for the fandom community.</p>
+      <div class="font-display text-lg mb-2 gradient-text">CosPlix</div>
+      <p class="text-xs" style="color:#606080;">© 2026 CosPlix Hub. Made with 💜 for the fandom community.</p>
     </footer>
   </div>
 
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script src="script.js"></script>
-  <script>initCommunityPage();</script>
+  <script>
+    // Initialize Lucide icons and Mobile Menu Logic
+    function toggleMobile() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+      menu.classList.toggle('open');
+    }
+
+    $(document).ready(() => {
+      lucide.createIcons(); // Required to render the menu icon
+      initCommunityPage();
+    });
+  </script>
 </body>
 </html>
