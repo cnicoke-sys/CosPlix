@@ -4,68 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gallery – CosPlix</title>
-  
+
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
+  <link rel="stylesheet" href="styles.css">
+
   <script>
-    tailwind.config = { theme: { extend: { fontFamily: { display: ['Dela Gothic One', 'cursive'], body: ['Outfit', 'sans-serif'] } } } }
+    tailwind.config = {
+      theme: { extend: { fontFamily: { display: ['Dela Gothic One', 'cursive'], body: ['Outfit', 'sans-serif'] } } }
+    }
   </script>
-  
-  <style>
-    html, body { height: 100%; margin: 0; background:#0a0a1a; color:#e8e8f0; overflow-x: hidden; } 
-    * { box-sizing: border-box; }
-
-    #particles-js { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; opacity: 0.8; }
-    .content-wrapper { position: relative; z-index: 10; }
-
-    .gradient-text {
-      background: linear-gradient(to right, #ff006e, #8338ec, #3a86ff, #ff006e);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-size: 200% auto;
-      animation: shine 4s linear infinite;
-    }
-    @keyframes shine { to { background-position: 200% center; } }
-
-    .nav-link { position: relative; cursor: pointer; transition: color 0.2s; text-decoration: none; }
-    .nav-link::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:3px; border-radius:2px; transition: width 0.3s; background: var(--c, #ff006e); }
-    .nav-link:hover::after, .nav-link.active::after { width:100%; }
-    
-    .mobile-menu { transform: translateX(-100%); transition: transform 0.3s ease; background:#0a0a1a; z-index: 100; }
-    .mobile-menu.open { transform: translateX(0); }
-    
-    .gallery-item { 
-      overflow: hidden; 
-      border-radius: 12px; 
-      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; 
-      background: #1a1a3e; 
-    }
-    .gallery-item:hover { 
-      transform: translateY(-6px) scale(1.02); 
-      z-index: 10; 
-      box-shadow: 0 10px 30px rgba(131,56,236,0.3);
-      backdrop-filter: blur(8px);
-      background: rgba(26, 26, 62, 0.6);
-    }
-    .gallery-item .overlay { opacity: 0; transition: opacity 0.3s; backdrop-filter: blur(4px); }
-    .gallery-item:hover .overlay { opacity: 1; }
-    
-    .genre-btn { opacity: 0.6; transition: opacity 0.3s; border: 1px solid rgba(255,255,255,0.1); }
-    .genre-btn.active-filter { opacity: 1; background: rgba(131,56,236,0.2); border-color: #8338ec; }
-
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .spinner { width: 40px; height: 40px; border: 4px solid rgba(255,255,255,0.1); border-top-color: #8338ec; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto; }
-    
-    .anim-slide-up { animation: slide-up 0.6s ease-out forwards; opacity: 0; }
-    @keyframes slide-up { from{opacity:0;transform:translateY(40px)} to{opacity:1;transform:translateY(0)} }
-  </style>
 </head>
 <body class="font-body">
-
   <div id="particles-js"></div>
 
   <div class="content-wrapper flex flex-col min-h-screen">
@@ -76,14 +28,14 @@
           <span class="font-display text-lg tracking-wide gradient-text">CosPlix</span>
         </a>
         <div class="hidden lg:flex items-center gap-6 text-sm font-medium">
-          <a href="index.html" class="nav-link" style="--c:#ff006e;">Home</a>
-          <a href="news.html" class="nav-link" style="--c:#8338ec;">News</a>
-          <a href="gallery.html" class="nav-link active" style="--c:#3a86ff; color:#3a86ff;">Gallery</a>
-          <a href="events.html" class="nav-link" style="--c:#fb5607;">Events</a>
+          <a href="index.html"     class="nav-link" style="--c:#ff006e;">Home</a>
+          <a href="news.html"      class="nav-link" style="--c:#8338ec;">News</a>
+          <a href="gallery.html"   class="nav-link active" style="--c:#3a86ff; color:#3a86ff;">Gallery</a>
+          <a href="events.html"    class="nav-link" style="--c:#fb5607;">Events</a>
           <a href="tutorials.html" class="nav-link" style="--c:#ffbe0b;">Tutorials</a>
           <a href="community.html" class="nav-link" style="--c:#06d6a0;">Community</a>
-          <a href="about.html" class="nav-link" style="--c:#e0aaff;">About</a>
-          <a href="contact.html" class="nav-link" style="--c:#ff006e;">Support</a>
+          <a href="about.html"     class="nav-link" style="--c:#e0aaff;">About</a>
+          <a href="contact.html"   class="nav-link" style="--c:#ff006e;">Support</a>
         </div>
         <button class="lg:hidden p-2" onclick="toggleMobile()" aria-label="Menu"><i data-lucide="menu" style="color:#ff006e;"></i></button>
       </div>
@@ -91,14 +43,14 @@
 
     <div id="mobile-menu" class="mobile-menu fixed inset-0 flex flex-col gap-1 p-6 pt-20">
       <button class="absolute top-4 right-4 p-2" onclick="toggleMobile()"><i data-lucide="x" style="color:#ff006e;"></i></button>
-      <a href="index.html" class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">🏠 Home</a>
-      <a href="news.html" class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">📰 News</a>
-      <a href="gallery.html" class="text-lg font-semibold py-3 px-4 rounded-lg bg-white/5 text-[#3a86ff]">📸 Gallery</a>
-      <a href="events.html" class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">🗓️ Events</a>
+      <a href="index.html"     class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">🏠 Home</a>
+      <a href="news.html"      class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">📰 News</a>
+      <a href="gallery.html"   class="text-lg font-semibold py-3 px-4 rounded-lg bg-white/5 text-[#3a86ff]">📸 Gallery</a>
+      <a href="events.html"    class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">🗓️ Events</a>
       <a href="tutorials.html" class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">✂️ Tutorials</a>
       <a href="community.html" class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">💬 Community</a>
-      <a href="about.html" class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">👥 About</a>
-      <a href="contact.html" class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">🎧 Support</a>
+      <a href="about.html"     class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">👥 About</a>
+      <a href="contact.html"   class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">🎧 Support</a>
     </div>
 
     <main class="pt-32 pb-16 max-w-7xl mx-auto px-6 flex-grow">
@@ -114,7 +66,7 @@
         </div>
 
         <div class="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
-          <div class="gallery-item break-inside-avoid relative group anim-slide-up" style="border:1px solid #ff006e33; animation-delay: 0.1s;">
+          <div class="gallery-item break-inside-avoid relative group anim-slide-up" style="border:1px solid #ff006e33; animation-delay:0.1s;">
             <img src="images/alyf.jpg" class="w-full h-auto object-cover min-h-[250px] transition duration-500 group-hover:scale-110" alt="Loid Forger">
             <div class="overlay absolute inset-0 flex flex-col items-center justify-center p-4 text-center" style="background:rgba(10,10,26,0.85);">
               <div class="font-display text-lg mb-1 text-white">Loid Forger</div>
@@ -122,7 +74,7 @@
               <div class="flex items-center gap-1 text-sm" style="color:#ff006e;">❤️ 227</div>
             </div>
           </div>
-          <div class="gallery-item break-inside-avoid relative group anim-slide-up" style="border:1px solid #8338ec33; animation-delay: 0.2s;">
+          <div class="gallery-item break-inside-avoid relative group anim-slide-up" style="border:1px solid #8338ec33; animation-delay:0.2s;">
             <img src="images/adawong.jpg" class="w-full h-auto object-cover min-h-[300px] transition duration-500 group-hover:scale-110" alt="Ada Wong">
             <div class="overlay absolute inset-0 flex flex-col items-center justify-center p-4 text-center" style="background:rgba(10,10,26,0.85);">
               <div class="font-display text-lg mb-1 text-white">Ada Wong</div>
@@ -130,7 +82,7 @@
               <div class="flex items-center gap-1 text-sm" style="color:#ff006e;">❤️ 518</div>
             </div>
           </div>
-          <div class="gallery-item break-inside-avoid relative group anim-slide-up" style="border:1px solid #fb560733; animation-delay: 0.3s;">
+          <div class="gallery-item break-inside-avoid relative group anim-slide-up" style="border:1px solid #fb560733; animation-delay:0.3s;">
             <img src="images/dante.jpg" class="w-full h-auto object-cover min-h-[280px] transition duration-500 group-hover:scale-110" alt="Dante Sparda">
             <div class="overlay absolute inset-0 flex flex-col items-center justify-center p-4 text-center" style="background:rgba(10,10,26,0.85);">
               <div class="font-display text-lg mb-1 text-white">Dante Sparda</div>
@@ -138,7 +90,7 @@
               <div class="flex items-center gap-1 text-sm" style="color:#ff006e;">❤️ 891</div>
             </div>
           </div>
-          <div class="gallery-item break-inside-avoid relative group anim-slide-up" style="border:1px solid #3a86ff33; animation-delay: 0.4s;">
+          <div class="gallery-item break-inside-avoid relative group anim-slide-up" style="border:1px solid #3a86ff33; animation-delay:0.4s;">
             <img src="images/kirito.jpg" class="w-full h-auto object-cover min-h-[240px] transition duration-500 group-hover:scale-110" alt="Kirito">
             <div class="overlay absolute inset-0 flex flex-col items-center justify-center p-4 text-center" style="background:rgba(10,10,26,0.85);">
               <div class="font-display text-lg mb-1 text-white">Kirito</div>
@@ -146,7 +98,7 @@
               <div class="flex items-center gap-1 text-sm" style="color:#ff006e;">❤️ 267</div>
             </div>
           </div>
-          <div class="gallery-item break-inside-avoid relative group anim-slide-up" style="border:1px solid #8338ec33; animation-delay: 0.5s;">
+          <div class="gallery-item break-inside-avoid relative group anim-slide-up" style="border:1px solid #8338ec33; animation-delay:0.5s;">
             <img src="images/sephiroth.jpg" class="w-full h-auto object-cover min-h-[320px] transition duration-500 group-hover:scale-110" alt="Sephiroth">
             <div class="overlay absolute inset-0 flex flex-col items-center justify-center p-4 text-center" style="background:rgba(10,10,26,0.85);">
               <div class="font-display text-lg mb-1 text-white">Sephiroth</div>
@@ -154,7 +106,7 @@
               <div class="flex items-center gap-1 text-sm" style="color:#ff006e;">❤️ 723</div>
             </div>
           </div>
-          <div class="gallery-item break-inside-avoid relative group anim-slide-up" style="border:1px solid #f0b2bc33; animation-delay: 0.6s;">
+          <div class="gallery-item break-inside-avoid relative group anim-slide-up" style="border:1px solid #f0b2bc33; animation-delay:0.6s;">
             <img src="images/xx_ning zt.jpg" class="w-full h-auto object-cover min-h-[260px] transition duration-500 group-hover:scale-110" alt="Zero-Two">
             <div class="overlay absolute inset-0 flex flex-col items-center justify-center p-4 text-center" style="background:rgba(10,10,26,0.85);">
               <div class="font-display text-lg mb-1 text-white">Zero Two</div>
@@ -162,7 +114,7 @@
               <div class="flex items-center gap-1 text-sm" style="color:#ff006e;">❤️ 1025</div>
             </div>
           </div>
-          <div class="gallery-item break-inside-avoid relative group anim-slide-up" style="border:1px solid #ffbe0b33; animation-delay: 0.7s;">
+          <div class="gallery-item break-inside-avoid relative group anim-slide-up" style="border:1px solid #ffbe0b33; animation-delay:0.7s;">
             <img src="images/sparxie.jpg" class="w-full h-auto object-cover min-h-[300px] transition duration-500 group-hover:scale-110" alt="Sparxie">
             <div class="overlay absolute inset-0 flex flex-col items-center justify-center p-4 text-center" style="background:rgba(10,10,26,0.85);">
               <div class="font-display text-lg mb-1 text-white">Sparxie (HSR)</div>
@@ -170,7 +122,7 @@
               <div class="flex items-center gap-1 text-sm" style="color:#ff006e;">❤️ 389</div>
             </div>
           </div>
-          <div class="gallery-item break-inside-avoid relative group anim-slide-up" style="border:1px solid #06d6a033; animation-delay: 0.8s;">
+          <div class="gallery-item break-inside-avoid relative group anim-slide-up" style="border:1px solid #06d6a033; animation-delay:0.8s;">
             <img src="images/genji.jpg" class="w-full h-auto object-cover min-h-[250px] transition duration-500 group-hover:scale-110" alt="Genji">
             <div class="overlay absolute inset-0 flex flex-col items-center justify-center p-4 text-center" style="background:rgba(10,10,26,0.85);">
               <div class="font-display text-lg mb-1 text-white">Genji (Overwatch)</div>
@@ -181,14 +133,14 @@
         </div>
       </section>
 
-      <div class="w-full h-px mb-16" style="background: linear-gradient(90deg, transparent, rgba(58,134,255,0.3), transparent);"></div>
+      <div class="w-full h-px mb-16" style="background:linear-gradient(90deg,transparent,rgba(58,134,255,0.3),transparent);"></div>
 
       <section>
         <div class="flex items-center gap-3 mb-8 border-b border-gray-800 pb-2">
           <span class="text-2xl">📡</span>
-          <h2 class="font-display text-2xl" style="color:#3a86ff;">Live Cosplay Search ❤️ </h2>
+          <h2 class="font-display text-2xl" style="color:#3a86ff;">Live Cosplay Search ❤️</h2>
         </div>
-        
+
         <div class="max-w-4xl mx-auto mb-10">
           <div class="flex gap-3 justify-center flex-wrap mb-6">
             <button class="genre-btn active-filter px-4 py-2 rounded-full text-xs md:text-sm font-semibold" data-query="" onclick="fetchCosplay('')">🔥 Trending</button>
@@ -196,101 +148,31 @@
             <button class="genre-btn px-4 py-2 rounded-full text-xs md:text-sm font-semibold" data-query="game OR gaming" onclick="fetchCosplay('game OR gaming')">🎮 Video Games</button>
             <button class="genre-btn px-4 py-2 rounded-full text-xs md:text-sm font-semibold" data-query="marvel OR dc OR comic" onclick="fetchCosplay('marvel OR dc OR comic')">🦸 Comics</button>
           </div>
-
           <div class="flex gap-3">
             <input id="search-input" type="text" placeholder="Search characters via Reddit API..." class="flex-1 rounded-xl px-4 py-3" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:#fff; outline:none;">
             <button class="px-6 py-3 rounded-xl font-bold text-white transition hover:opacity-90" style="background:linear-gradient(135deg,#8338ec,#3a86ff);" onclick="searchCosplay()">Search</button>
           </div>
         </div>
-        
+
         <div id="api-loading" class="text-center py-20 hidden">
           <div class="spinner mb-4"></div>
           <p style="color:#a0a0c0;">Syncing with Reddit...</p>
         </div>
-        <div id="api-error" class="text-center py-20 hidden text-red-400">
-          <p>⚠️ Failed to load API data.</p>
-        </div>
-
+        <div id="api-error" class="text-center py-20 hidden text-red-400"><p>⚠️ Failed to load API data.</p></div>
         <div id="api-gallery-grid" class="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4"></div>
       </section>
     </main>
 
     <footer class="w-full py-8 px-6 text-center mt-12" style="background:rgba(255,255,255,0.02); border-top:1px solid rgba(255,255,255,0.05);">
-        <div class="font-display text-lg mb-2 gradient-text">CosPlix</div>
-        <p class="text-xs" style="color:#606080;">© 2026 CosPlix, Cosplay & Anime Hub.</p>
+      <div class="font-display text-lg mb-2 gradient-text">CosPlix</div>
+      <p class="text-xs" style="color:#606080;">© 2026 CosPlix, Cosplay & Anime Hub.</p>
     </footer>
   </div>
 
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="script.js"></script>
   <script>
-    particlesJS("particles-js", {
-      "particles": {
-        "number": { "value": 110, "density": { "enable": true, "value_area": 800 } },
-        "color": { "value": ["#ff006e", "#8338ec", "#3a86ff"] },
-        "shape": { "type": "circle" },
-        "opacity": { "value": 0.6, "random": true },
-        "size": { "value": 3, "random": true },
-        "line_linked": { "enable": true, "distance": 150, "color": "#8338ec", "opacity": 0.2, "width": 1 },
-        "move": { "enable": true, "speed": 2.2, "out_mode": "out" }
-      }
-    });
-
-    function toggleMobile() { document.getElementById('mobile-menu').classList.toggle('open'); }
-    
-    // Initialize Lucide icons for mobile menu button and close button
-    if (typeof lucide !== 'undefined') {
-      lucide.createIcons();
-    }
-
-    // API LOGIC
-    $('#search-input').on('keydown', function(e) { if (e.key === 'Enter') searchCosplay(); });
-    function searchCosplay() { fetchCosplay($('#search-input').val().trim()); }
-
-    function fetchCosplay(query) {
-      $('.genre-btn').removeClass('active-filter');
-      if (query) { $(`.genre-btn[data-query="${query}"]`).addClass('active-filter'); } 
-      else { $(`.genre-btn[data-query=""]`).addClass('active-filter'); }
-
-      $('#api-gallery-grid').empty();
-      $('#api-error').addClass('hidden');
-      $('#api-loading').removeClass('hidden');
-
-      let endpoint = 'https://www.reddit.com/r/cosplay/hot.json?jsonp=?&limit=40';
-      if (query) { endpoint = `https://www.reddit.com/r/cosplay/search.json?q=${encodeURIComponent(query)}&restrict_sr=on&sort=relevance&limit=40&jsonp=?`; }
-
-      $.getJSON(endpoint, function(response) {
-          $('#api-loading').addClass('hidden');
-          const posts = response.data.children;
-          let htmlContent = '';
-          let imageCount = 0;
-          const themeColors = ['#ff006e', '#8338ec', '#3a86ff', '#fb5607', '#06d6a0'];
-
-          posts.forEach(function(post) {
-            const data = post.data;
-            if (data.url && data.url.match(/\.(jpeg|jpg|png|webp)$/i) && !data.stickied && imageCount < 16) {
-              const color = themeColors[imageCount % themeColors.length];
-              htmlContent += `
-                <a href="https://reddit.com${data.permalink}" target="_blank" class="block">
-                  <div class="gallery-item break-inside-avoid relative group anim-slide-up mb-4" style="border:1px solid ${color}44; animation-delay:${imageCount*0.05}s;">
-                    <img src="${data.url}" class="w-full h-auto object-cover transition duration-500 group-hover:scale-110">
-                    <div class="overlay absolute inset-0 flex flex-col items-center justify-center p-4 text-center" style="background:rgba(10,10,26,0.85);">
-                      <div class="font-display text-lg mb-1 text-white line-clamp-2">${data.title}</div>
-                      <div class="text-sm mb-3" style="color:${color};">u/${data.author}</div>
-                      <div class="flex items-center gap-1 text-sm" style="color:#ff006e;">❤️ ${data.ups}</div>
-                    </div>
-                  </div>
-                </a>`;
-              imageCount++;
-            }
-          });
-          $('#api-gallery-grid').html(htmlContent || '<p class="col-span-full text-center">No results found.</p>');
-      }).fail(() => {
-          $('#api-loading').addClass('hidden');
-          $('#api-error').removeClass('hidden');
-      });
-    }
-
-    $(document).ready(() => fetchCosplay(''));
+    $(document).ready(() => initGalleryPage());
   </script>
 </body>
 </html>

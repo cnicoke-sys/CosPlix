@@ -1,0 +1,236 @@
+/* ============================================================
+   CosPlix – Shared Stylesheet
+   Covers: base, particles, nav, animations, scrollbar,
+           mobile menu, glass cards, and page-specific rules
+   ============================================================ */
+
+/* ----- Base ----- */
+html { background: #0a0a1a; scroll-behavior: smooth; }
+html, body { height: 100%; margin: 0; background: #0a0a1a; color: #e8e8f0; overflow-x: hidden; }
+* { box-sizing: border-box; }
+
+/* ----- Particles ----- */
+#particles-js {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 1;
+}
+
+/* ----- Layout Wrappers ----- */
+.content-wrapper { position: relative; z-index: 10; }
+.main-content    { position: relative; z-index: 10; }
+
+/* ----- Gradient / Brand Text ----- */
+.gradient-text,
+.brand-text {
+  background: linear-gradient(to right, #ff006e, #8338ec, #3a86ff, #ff006e);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+  animation: shine 4s linear infinite;
+}
+@keyframes shine { to { background-position: 200% center; } }
+
+/* ----- Animations ----- */
+@keyframes float     { 0%,100%{transform:translateY(0)}   50%{transform:translateY(-12px)} }
+@keyframes pulse-glow{ 0%,100%{box-shadow:0 0 20px rgba(255,0,100,0.3)} 50%{box-shadow:0 0 40px rgba(255,0,100,0.6)} }
+@keyframes slide-up  { from{opacity:0;transform:translateY(40px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fade-in   { from{opacity:0} to{opacity:1} }
+@keyframes spin      { to { transform: rotate(360deg); } }
+@keyframes drift     { from { transform: translate(-20%,-20%) scale(1); } to { transform: translate(40%,30%) scale(1.2); } }
+
+.anim-float    { animation: float     3s ease-in-out infinite; }
+.anim-pulse    { animation: pulse-glow 2s ease-in-out infinite; }
+.anim-slide-up { animation: slide-up  0.6s ease-out forwards; }
+.anim-fade     { animation: fade-in   0.4s ease-out forwards; }
+
+/* ----- Scrollbar ----- */
+::-webkit-scrollbar       { width: 8px; }
+::-webkit-scrollbar-track { background: #0a0a1a; }
+::-webkit-scrollbar-thumb { background: #ff006e; border-radius: 4px; }
+
+/* ----- Navigation Links ----- */
+.nav-link {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #a0a0c0;
+  position: relative;
+  transition: color 0.3s;
+  text-decoration: none;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 2px;
+  border-radius: 2px;
+  transition: width 0.3s;
+  background: var(--c, #ff006e);
+}
+.nav-link:hover::after,
+.nav-link.active::after { width: 100%; }
+
+/* Active colour overrides (set per-page via inline --c or class) */
+.nav-link.active-home     { color: #ff006e !important; }
+.nav-link.active-news     { color: #ff006e !important; }
+.nav-link.active-gallery  { color: #3a86ff !important; }
+.nav-link.active-events   { color: #fb5607 !important; }
+.nav-link.active-tutorials{ color: #ffbe0b !important; }
+.nav-link.active-community{ color: #06d6a0 !important; }
+.nav-link.active-about    { color: #e0aaff !important; }
+.nav-link.active-support  { color: #ff006e !important; }
+
+/* ----- Mobile Menu ----- */
+.mobile-menu {
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  background: #0a0a1a;
+  z-index: 100;
+}
+.mobile-menu.open { transform: translateX(0); }
+
+/* ----- Cards ----- */
+.card-hover { transition: transform 0.3s, box-shadow 0.3s; }
+.card-hover:hover { transform: translateY(-6px) scale(1.02); border-color: #ff006e; }
+
+.glass-card {
+  background: rgba(21, 21, 48, 0.4);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.glass-card:hover {
+  transform: translateY(-8px);
+  background: rgba(30, 30, 70, 0.5);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(255,0,110,0.2);
+}
+
+/* ----- Spinner ----- */
+.spinner {
+  width: 40px; height: 40px;
+  border: 4px solid rgba(255,255,255,0.1);
+  border-top-color: #8338ec;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+/* ============================================================
+   PAGE: index.html
+   ============================================================ */
+.showcase-slice { overflow: hidden; position: relative; flex: 1; }
+.showcase-slice img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.showcase-container:hover .showcase-slice img { transform: scale(1.08); }
+
+/* ============================================================
+   PAGE: news.html
+   ============================================================ */
+body.page-news {
+  background: radial-gradient(circle at 50% 50%, #0d0d2b 0%, #050510 100%) !important;
+}
+.bg-blob {
+  position: fixed;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(131,56,236,0.08) 0%, transparent 70%);
+  filter: blur(80px);
+  z-index: 0;
+  pointer-events: none;
+  animation: drift 25s infinite alternate ease-in-out;
+}
+.feed-btn { position: relative; overflow: hidden; transition: 0.4s; }
+.feed-btn.active-tab {
+  background: rgba(255,255,255,0.1);
+  box-shadow: 0 0 15px currentColor;
+  border-color: currentColor;
+}
+.social-feed { display: none; }
+.social-feed.active { display: block; animation: slideIn 0.5s ease; }
+@keyframes slideIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+.pulse-text {
+  font-family: 'Dela Gothic One', cursive;
+  text-transform: uppercase;
+  font-style: italic;
+  line-height: 1;
+}
+
+/* ============================================================
+   PAGE: gallery.html
+   ============================================================ */
+.gallery-item {
+  overflow: hidden;
+  border-radius: 12px;
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  background: #1a1a3e;
+}
+.gallery-item:hover {
+  transform: translateY(-6px) scale(1.02);
+  z-index: 10;
+  box-shadow: 0 10px 30px rgba(131,56,236,0.3);
+  backdrop-filter: blur(8px);
+  background: rgba(26,26,62,0.6);
+}
+.gallery-item .overlay { opacity: 0; transition: opacity 0.3s; backdrop-filter: blur(4px); }
+.gallery-item:hover .overlay { opacity: 1; }
+.genre-btn { opacity: 0.6; transition: opacity 0.3s; border: 1px solid rgba(255,255,255,0.1); }
+.genre-btn.active-filter { opacity: 1; background: rgba(131,56,236,0.2); border-color: #8338ec; }
+
+/* ============================================================
+   PAGE: events.html
+   ============================================================ */
+.event-card {
+  transition: transform 0.4s cubic-bezier(0.175,0.885,0.32,1.275), box-shadow 0.3s, background 0.3s;
+  background: rgba(21,21,48,0.6);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+.event-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  background: rgba(30,30,70,0.4);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 15px 40px rgba(131,56,236,0.2);
+  border-color: rgba(131,56,236,0.4);
+}
+
+/* ============================================================
+   PAGE: tutorials.html
+   ============================================================ */
+.tutorial-card {
+  transition: all 0.5s cubic-bezier(0.175,0.885,0.32,1.275);
+  background: rgba(21,21,48,0.4);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+.tutorial-card:hover {
+  transform: translateY(-10px);
+  background: rgba(30,30,70,0.5);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  border-color: rgba(255,255,255,0.15);
+}
+.stats-pill {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(8px);
+}
+#difficulty-filter {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23ff006e' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 25px;
+}
+
+/* ============================================================
+   PAGE: contact.html
+   ============================================================ */
+.chat-bubble       { border-radius: 18px 18px 18px 4px; }
+.chat-bubble-right { border-radius: 18px 18px 4px 18px; }

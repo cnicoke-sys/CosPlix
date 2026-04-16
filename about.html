@@ -4,76 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About – CosPlix</title>
-  
+
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
+  <link rel="stylesheet" href="styles.css">
+
   <script>
     tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            display: ['Dela Gothic One', 'cursive'],
-            body: ['Outfit', 'sans-serif']
-          }
-        }
-      }
+      theme: { extend: { fontFamily: { display: ['Dela Gothic One', 'cursive'], body: ['Outfit', 'sans-serif'] } } }
     }
   </script>
-  
-  <style>
-    html, body { height: 100%; margin: 0; background:#0a0a1a; color:#e8e8f0; overflow-x: hidden; } 
-    * { box-sizing: border-box; }
-
-    #particles-js { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
-    .content-wrapper { position: relative; z-index: 10; }
-
-    .brand-text {
-      font-family: 'Dela Gothic One', cursive;
-      background: linear-gradient(to right, #ff006e, #8338ec, #3a86ff, #ff006e);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-size: 200% auto;
-      animation: shine 4s linear infinite;
-    }
-    @keyframes shine { to { background-position: 200% center; } }
-
-    .nav-link { 
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: #a0a0c0;
-      position: relative; 
-      transition: color 0.3s; 
-    }
-    .nav-link::after { 
-      content:''; position:absolute; bottom:-4px; left:0; width:0; height:2px; border-radius:2px; transition: width 0.3s; background: var(--c, #ff006e); 
-    }
-    .nav-link:hover::after, .nav-link.active::after { width:100%; }
-    .nav-link.active { color: #e0aaff !important; }
-
-    .glass-card { 
-      background: rgba(21, 21, 48, 0.4);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-    .glass-card:hover { 
-      transform: translateY(-8px); 
-      background: rgba(30, 30, 70, 0.5);
-      border-color: rgba(255, 255, 255, 0.15);
-    }
-
-    @keyframes slide-up { from{opacity:0;transform:translateY(40px)} to{opacity:1;transform:translateY(0)} }
-    .anim-slide-up { animation: slide-up 0.6s ease-out forwards; }
-    
-    .mobile-menu { transform: translateX(-100%); transition: transform 0.3s ease; background:#0a0a1a; z-index: 100; }
-    .mobile-menu.open { transform: translateX(0); }
-  </style>
 </head>
-
 <body class="font-body">
   <div id="particles-js"></div>
 
@@ -85,14 +27,14 @@
           <span class="brand-text text-lg tracking-wide">CosPlix</span>
         </a>
         <div class="hidden lg:flex items-center gap-6 text-sm font-medium">
-          <a href="index.html" class="nav-link" style="--c:#ff006e;">Home</a>
-          <a href="news.html" class="nav-link" style="--c:#8338ec;">News</a>
-          <a href="gallery.html" class="nav-link" style="--c:#3a86ff;">Gallery</a>
-          <a href="events.html" class="nav-link" style="--c:#fb5607;">Events</a>
+          <a href="index.html"     class="nav-link" style="--c:#ff006e;">Home</a>
+          <a href="news.html"      class="nav-link" style="--c:#8338ec;">News</a>
+          <a href="gallery.html"   class="nav-link" style="--c:#3a86ff;">Gallery</a>
+          <a href="events.html"    class="nav-link" style="--c:#fb5607;">Events</a>
           <a href="tutorials.html" class="nav-link" style="--c:#ffbe0b;">Tutorials</a>
           <a href="community.html" class="nav-link" style="--c:#06d6a0;">Community</a>
-          <a href="about.html" class="nav-link active" style="--c:#e0aaff;">About</a>
-          <a href="contact.html" class="nav-link" style="--c:#ff006e;">Support</a>
+          <a href="about.html"     class="nav-link active" style="--c:#e0aaff; color:#e0aaff;">About</a>
+          <a href="contact.html"   class="nav-link" style="--c:#ff006e;">Support</a>
         </div>
         <button class="lg:hidden p-2" onclick="toggleMobile()"><i data-lucide="menu" style="color:#ff006e;"></i></button>
       </div>
@@ -100,18 +42,18 @@
 
     <div id="mobile-menu" class="mobile-menu fixed inset-0 flex flex-col gap-1 p-6 pt-20">
       <button class="absolute top-4 right-4 p-2" onclick="toggleMobile()"><i data-lucide="x" style="color:#ff006e;"></i></button>
-      <a href="index.html" class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">🏠 Home</a>
-      <a href="news.html" class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">📰 News</a>
-      <a href="gallery.html" class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">📸 Gallery</a>
-      <a href="events.html" class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">🗓️ Events</a>
+      <a href="index.html"     class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">🏠 Home</a>
+      <a href="news.html"      class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">📰 News</a>
+      <a href="gallery.html"   class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">📸 Gallery</a>
+      <a href="events.html"    class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">🗓️ Events</a>
       <a href="tutorials.html" class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">✂️ Tutorials</a>
       <a href="community.html" class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">💬 Community</a>
-      <a href="about.html" class="text-lg font-semibold py-3 px-4 rounded-lg bg-white/5 text-[#e0aaff]">👥 About</a>
-      <a href="contact.html" class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">🎧 Support</a>
+      <a href="about.html"     class="text-lg font-semibold py-3 px-4 rounded-lg bg-white/5 text-[#e0aaff]">👥 About</a>
+      <a href="contact.html"   class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">🎧 Support</a>
     </div>
 
     <main class="pt-32 pb-16 max-w-7xl mx-auto px-6 flex-grow">
-      
+
       <div class="relative mb-20 rounded-3xl overflow-hidden glass-card anim-slide-up">
         <video autoplay muted loop playsinline class="w-full h-[400px] object-cover opacity-70">
           <source src="images/eyegif.mp4" type="video/mp4">
@@ -165,30 +107,13 @@
     </main>
 
     <footer class="w-full py-10 px-6 text-center mt-auto" style="background:rgba(255,255,255,0.02); border-top:1px solid rgba(255,255,255,0.05);">
-        <div class="brand-text text-xl mb-3">CosPlix</div>
-        <p class="text-xs" style="color:#606080;">© 2026 CosPlix Hub. Made with 💜 for the fandom community.</p>
+      <div class="brand-text text-xl mb-3">CosPlix</div>
+      <p class="text-xs" style="color:#606080;">© 2026 CosPlix Hub. Made with 💜 for the fandom community.</p>
     </footer>
   </div>
 
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-  <script>
-    function toggleMobile() { document.getElementById('mobile-menu').classList.toggle('open'); }
-    
-    // Initialize Lucide icons for mobile menu button and close button
-    if (typeof lucide !== 'undefined') {
-      lucide.createIcons();
-    }
-
-    particlesJS("particles-js", {
-      "particles": {
-        "number": { "value": 130, "density": { "enable": true, "value_area": 800 } },
-        "color": { "value": ["#ff006e", "#8338ec", "#3a86ff"] },
-        "opacity": { "value": 0.5, "random": true },
-        "size": { "value": 2.5, "random": true },
-        "line_linked": { "enable": true, "distance": 130, "color": "#8338ec", "opacity": 0.15 },
-        "move": { "enable": true, "speed": 1.5, "out_mode": "out" }
-      }
-    });
-  </script>
+  <script src="script.js"></script>
+  <script>initAboutPage();</script>
 </body>
 </html>
