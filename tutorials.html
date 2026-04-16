@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tutorials – CosPlix</title>
+  
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = { theme: { extend: { fontFamily: { display: ['Dela Gothic One', 'cursive'], body: ['Outfit', 'sans-serif'] } } } }
+  </script>
+  
+  <style>
+    html, body { height: 100%; margin: 0; background:#0a0a1a; color:#e8e8f0; overflow-x: hidden; } 
+    * { box-sizing: border-box; }
+
+    #particles-js { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+    .content-wrapper { position: relative; z-index: 10; }
+
+    /* Navigation Styling matching screenshots */
+    .nav-link { 
+      font-size: 13px; 
+      font-weight: 700; 
+      letter-spacing: -0.01em; 
+      color: #ffffff; 
+      opacity: 0.8; 
+      position: relative; 
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .nav-link:hover { opacity: 1; }
+    
+    .nav-link::after { 
+      content:''; 
+      position:absolute; 
+      bottom: -6px; 
+      left: 0; 
+      width: 0; 
+      height: 3px; 
+      background: #ff006e; 
+      transition: width 0.3s; 
+    }
+    
+    .nav-link.active { 
+      opacity: 1; 
+      color: #ffbe0b; 
+    }
+    
+    .nav-link.active::after { 
+      width: 100%; 
+      background: #ffbe0b; 
+    }
+
+    .gradient-text {
+      background: linear-gradient(to right, #ff006e, #8338ec, #3a86ff, #ff006e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% auto;
+      animation: shine 4s linear infinite;
+    }
+    @keyframes shine { to { background-position: 200% center; } }
+
+    .tutorial-card { 
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+      background: rgba(21, 21, 48, 0.4);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .tutorial-card:hover { 
+      transform: translateY(-10px); 
+      background: rgba(30, 30, 70, 0.5);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .stats-pill {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(8px);
+    }
+
+    #difficulty-filter {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23ff006e' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      padding-right: 25px;
+    }
+
+    .mobile-menu { transform: translateX(-100%); transition: transform 0.3s ease; background:#0a0a1a; z-index: 100; }
+    .mobile-menu.open { transform: translateX(0); }
+
+    @keyframes slide-up { from{opacity:0;transform:translateY(40px)} to{opacity:1;transform:translateY(0)} }
+    .anim-slide-up { animation: slide-up 0.6s ease-out forwards; }
+  </style>
+</head>
+<body class="font-body">
+
+  <div id="particles-js"></div>
+
+  <div class="content-wrapper flex flex-col min-h-full">
+    <nav class="fixed top-0 left-0 w-full z-50" style="background:rgba(10,10,26,0.92); backdrop-filter:blur(16px); border-bottom:1px solid rgba(255,255,255,0.05);">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl shadow-lg" style="background:linear-gradient(135deg,#ff006e,#8338ec);">⚡</div>
+          <span class="font-display text-xl tracking-tighter gradient-text">CosPlix</span>
+        </a>
+        <div class="hidden lg:flex items-center gap-7">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="news.html" class="nav-link">News</a>
+          <a href="gallery.html" class="nav-link">Gallery</a>
+          <a href="events.html" class="nav-link">Events</a>
+          <a href="tutorials.html" class="nav-link active">Tutorials</a>
+          <a href="community.html" class="nav-link">Community</a>
+          <a href="about.html" class="nav-link">About</a>
+          <a href="contact.html" class="nav-link">Support</a>
+        </div>
+        <button class="lg:hidden p-2" onclick="toggleMobile()"><i data-lucide="menu" style="color:#ff006e;"></i></button>
+      </div>
+    </nav>
+
+    <div id="mobile-menu" class="mobile-menu fixed inset-0 z-[60] flex flex-col gap-1 p-6 pt-24">
+      <button class="absolute top-6 right-6 p-2" onclick="toggleMobile()"><i data-lucide="x" style="color:#ff006e;"></i></button>
+      <a href="index.html" class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">🏠 Home</a>
+      <a href="news.html" class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">📰 News</a>
+      <a href="gallery.html" class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">🖼️ Gallery</a>
+      <a href="events.html" class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">🗓️ Events</a>
+      <a href="tutorials.html" class="text-lg font-semibold py-3 px-4 rounded-lg bg-white/5 text-[#ffbe0b]">✂️ Tutorials</a>
+      <a href="community.html" class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">💬 Community</a>
+      <a href="about.html" class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">👥 About</a>
+      <a href="contact.html" class="text-lg font-semibold py-3 px-4 rounded-lg hover:bg-white/5">🎧 Support</a>
+    </div>
+
+    <main class="pt-32 pb-16 max-w-7xl mx-auto px-6 flex-grow w-full">
+      <div class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div>
+          <h1 class="font-display text-4xl md:text-5xl mb-3"><span style="color:#ffbe0b;">Tutorials</span> <span style="color:#fff;">& Guides</span></h1>
+          <p style="color:#8080a0;" class="text-lg">Master the craft with industry-standard techniques.</p>
+        </div>
+        <div class="flex gap-4">
+          <div class="stats-pill px-4 py-2 rounded-2xl text-center min-w-[100px]">
+            <div class="text-xs text-gray-500 uppercase font-bold tracking-widest">Lessons</div>
+            <div class="text-xl font-display text-white" id="lesson-count">6</div>
+          </div>
+          <div class="stats-pill px-4 py-2 rounded-2xl text-center border-l-2 min-w-[140px]" style="border-color:#ff006e;">
+            <div class="text-xs text-gray-500 uppercase font-bold tracking-widest">Difficulty</div>
+            <select id="difficulty-filter" onchange="filterTutorials()" class="bg-transparent text-xl font-display text-white outline-none cursor-pointer text-center w-full">
+              <option value="All" class="bg-[#0a0a1a]">All</option>
+              <option value="Beginner" class="bg-[#0a0a1a]">Beginner</option>
+              <option value="Intermediate" class="bg-[#0a0a1a]">Intermediate</option>
+              <option value="Advanced" class="bg-[#0a0a1a]">Advanced</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div id="tutorials-list" class="grid md:grid-cols-2 gap-8"></div>
+    </main>
+
+    <footer class="w-full py-10 px-6 text-center mt-auto">
+        <div class="font-display text-xl mb-3 gradient-text">CosPlix</div>
+        <p class="text-sm" style="color:#606080;">© 2026 CosPlix Academy.</p>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    function toggleMobile() { document.getElementById('mobile-menu').classList.toggle('open'); }
+
+    particlesJS("particles-js", {
+      "particles": {
+        "number": { "value": 120, "density": { "enable": true, "value_area": 800 } },
+        "color": { "value": ["#ff006e", "#8338ec", "#3a86ff"] },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.5, "random": true },
+        "size": { "value": 2, "random": true },
+        "line_linked": { "enable": true, "distance": 150, "color": "#8338ec", "opacity": 0.2 },
+        "move": { "enable": true, "speed": 1.5, "out_mode": "out" }
+      }
+    });
+
+    // Initialize Lucide icons for mobile buttons
+    if (typeof lucide !== 'undefined') {
+      lucide.createIcons();
+    }
+
+    // Tutorials data with real links
+    const tutorialsData = [
+      { emoji:'🧵', title:'Beginner\'s Guide to EVA Foam', difficulty:'Beginner', color:'#ff006e', duration:'45 min', desc:'Learn the basics of cutting, shaping, and painting EVA foam.', link:'https://www.instructables.com/Introduction-to-EVA-Foam/' },
+      { emoji:'💇', title:'Advanced Wig Styling', difficulty:'Intermediate', color:'#8338ec', duration:'30 min', desc:'Master spiking and gravity-defying hair techniques.', link:'https://www.epiccosplay.com/pages/wigs' },
+      { emoji:'🎨', title:'Digital Anime Illustration', difficulty:'Beginner', color:'#3a86ff', duration:'60 min', desc:'Introduction to digital drawing and shading tools.', link:'https://www.youtube.com/playlist?list=PLWp4kPwtWDF24zrEYpiuNoX__nx0Vscl8' },
+      { emoji:'⚔️', title:'Realistic Prop Weaponry', difficulty:'Advanced', color:'#fb5607', duration:'90 min', desc:'Build props using Worbla and resin casting.', link:'https://www.worbla.com/?https://punishedprops.com/wp-content/uploads/2012/09/2012-04-04_PropMakingGuide_V1.pdf=14' },
+      { emoji:'📸', title:'Photography & Post-Processing', difficulty:'Beginner', color:'#ffbe0b', duration:'20 min', desc:'Capture the perfect shot with lighting and editing.', link:'https://www.lyricalvillaincosplay.com/post/cosplay-photography-101' },
+      { emoji:'🪡', title:'Pattern Drafting & Sewing', difficulty:'Advanced', color:'#06d6a0', duration:'120 min', desc:'Draft your own patterns for accurate costumes.', link:'https://sewexpo.com/2018/01/17/sewing-techniques-applied-to-costuming-with-anna-he/' }
+    ];
+
+    function filterTutorials() {
+      const selected = document.getElementById('difficulty-filter').value;
+      const filtered = selected === 'All' ? tutorialsData : tutorialsData.filter(t => t.difficulty === selected);
+      const container = $('#tutorials-list');
+      container.empty();
+      document.getElementById('lesson-count').innerText = filtered.length;
+
+      filtered.forEach((t, i) => {
+        container.append(`
+          <div class="tutorial-card rounded-3xl p-8 anim-slide-up flex gap-6" style="animation-delay:${i*0.05}s;">
+            <div class="hidden sm:flex flex-shrink-0 w-16 h-16 rounded-2xl items-center justify-center text-4xl" 
+                 style="background: ${t.color}15; border: 1px solid ${t.color}33;">${t.emoji}</div>
+            <div class="flex-1">
+              <div class="flex flex-wrap gap-2 mb-3">
+                <span class="px-3 py-1 rounded-lg text-[10px] font-bold uppercase tracking-widest" style="background:${t.color}; color:white;">${t.difficulty}</span>
+                <span class="px-3 py-1 rounded-lg text-[10px] font-bold uppercase tracking-widest bg-white/5 text-gray-400">⏱️ ${t.duration}</span>
+              </div>
+              <h3 class="font-display text-xl mb-2 text-white">${t.title}</h3>
+              <p class="text-sm text-gray-400 leading-relaxed mb-6">${t.desc}</p>
+              <button onclick="window.open('${t.link}', '_blank')" class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider hover:gap-4 transition-all" style="color:${t.color};">
+                Start Module <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+        `);
+      });
+      // Re-initialize icons for dynamically added arrow icons
+      if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+      }
+    }
+
+    $(document).ready(() => filterTutorials());
+  </script>
+</body>
+</html>
